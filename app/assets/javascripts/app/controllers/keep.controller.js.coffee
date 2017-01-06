@@ -9,6 +9,10 @@
     confirm = window.confirm ('Are you sure?')
     KeepFactory.destroy(id) if confirm
 
+  $scope.destroyMany = (keepsToRemove) ->
+    confirm = window.confirm ('Are you sure?')
+    KeepFactory.destroy_many(keepsToRemove) if confirm
+
   $scope.justKeepIt = (keep) ->
     KeepFactory.create(keep).then (response) ->
       $rootScope.$broadcast 'nk.default.task.created', response.data
@@ -18,7 +22,7 @@
   # create and start
   $scope.startItNow = (keep) ->
     keep.started = true
-    keep.started_at = new Date()
+    keep.started_at = moment().format("YYYY-MM-DD HH:mm:ss")
 
     KeepFactory.create(keep).then (response) ->
       $rootScope.$broadcast 'nk.task.started', response.data
@@ -30,7 +34,7 @@
     KeepFactory.update(keep.id, keep)
 
   $scope.formatDate = (date) ->
-    moment(date, "YYYY-MM-DD").fromNow() if date
+    moment(date, "YYYY-MM-DD HH:mm:ss").fromNow() if date
 
 
 ]
