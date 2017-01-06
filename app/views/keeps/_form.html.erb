@@ -15,12 +15,10 @@
       <%= select_tag 'keep.makro_id', options_for_select(Makro.all.map{|m|[m.name, m.id]}), { include_blank: true, class: 'form-control', 'ng-model': 'keep.makro_id' } %>
     </div>
 
-    <div class="col-sm-1 no-padding">
+    <div class="col-sm-1 no-padding" >
       <a class="btn btn-info btn-xs btn-slim btn-trans" 
-        id="add-makro"
-        style="position: absolute;" 
-        data-toggle="popover" 
-        title="Add A new Macro Task">
+        uib-popover-template="'add-makro-form.html'" popover-title="Add A new Macro Task"
+        style="position: absolute;" >
         <i class="glyphicon glyphicon-plus"></i>
       </a>
     </div>
@@ -33,12 +31,11 @@
     <input type="submit" ng-click="startItNow(keep)" value="Starting Now!" class="btn btn-success" />
   </div>
 </form>
-
-<div class="hide" id="makro-form">
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Makro Task" name="makro.name">
-    <span class="input-group-btn">
-      <button class="btn btn-default" type="button">Add</button>
-    </span>
-  </div>
-</div>
+<script type="text/ng-template" id="add-makro-form.html">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Makro Task" name="makro.name" ng-model="makro.name">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="addMakro(makro)">Add</button>
+      </span>
+    </div>
+</script>
