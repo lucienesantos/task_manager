@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require angular.min
 //= require ui-bootstrap-tpls-2.3.0.min
+//= require sweetalert.min
 //= require moment
 //= require wow.min
 

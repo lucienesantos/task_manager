@@ -12,6 +12,7 @@
  *
  *= require bootstrap.min
  *= require animate
+ *= require sweetalert.css
  *= require_tree .
  *= require_self
  */
