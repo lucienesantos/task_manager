@@ -38,6 +38,9 @@
     , (error) ->
       console.error error
 
+  $scope.clearKeep = () ->
+    $scope.keep = {}
+
    $scope.updateKeepsList = () ->
     keepsToRemove = $scope.keeps.filter (keep) -> return keep if keep.isMarked
     keepsToRemove.forEach (keep) ->
@@ -46,8 +49,12 @@
   $rootScope.$on 'nk.started.task.created', (event, data) ->
     $scope.keeps.unshift data
 
+  $rootScope.$on 'nk.default.task.created', (event, data) ->
+    $scope.clearKeep()
+
   $rootScope.$on 'nk.task.started', (event, data) ->
     $scope.keeps.push data
+    $scope.clearKeep()
 
   $rootScope.$on 'nk.default.task.created_makro', (event, data) ->
     $scope.makros.push data;
