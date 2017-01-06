@@ -18,9 +18,9 @@
       console.error error
 
   $scope.removeIt = (keep_id, index) ->
-    $scope.destroy(keep_id).then (success) ->
+    $scope.destroy keep_id, (success) ->
       $scope.keeps.splice(index, 1)
-    , (error) ->
+    ,(error) ->
       console.error error
 
   $scope.updateSelectedKeeps = () ->
@@ -28,9 +28,9 @@
 
   $scope.removeMany = () ->
     keepsToRemove = $scope.keeps.map (keep) -> return keep.id if keep.isMarked
-    $scope.destroyMany(keepsToRemove).then (success) ->
+    $scope.destroyMany keepsToRemove, (success) ->
       $scope.updateKeepsList()
-    , (error) ->
+    ,(error) ->
       console.error error
 
   $scope.finishIt = (keep, index) ->
