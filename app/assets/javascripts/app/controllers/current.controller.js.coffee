@@ -1,4 +1,4 @@
-@app.controller 'CurrentCtrl', ['$rootScope', '$scope', ($rootScope, $scope) ->
+@app.controller 'CurrentCtrl', ['$rootScope', '$scope', 'MakroFactory', ($rootScope, $scope, MakroFactory) ->
 
   $scope.modeDelete = false
 
@@ -6,6 +6,15 @@
     $scope.keeps =  response.data
   , (error) ->
     console.error error
+
+  $scope.init = () ->
+    $scope.fetchMakros()
+
+  $scope.fetchMakros = () ->
+    MakroFactory.index().then (response) ->
+      $scope.makros =  response.data
+    , (error) ->
+      console.error error
 
   $scope.removeIt = (keep_id, index) ->
     $scope.destroy(keep_id).then (success) ->
@@ -23,7 +32,6 @@
   $scope.finishIt = (keep, index) ->
     keep.completed = true
     keep.completed_at = new Date()
-
     $scope.update(keep).then (response) ->
       $scope.keeps.splice(index, 1)
       $rootScope.$broadcast 'nk.task.completed', response.data
@@ -37,8 +45,13 @@
 
   $rootScope.$on 'nk.started.task.created', (event, data) ->
     $scope.keeps.unshift data
-    $scope.keeps = $scope.keeps
 
   $rootScope.$on 'nk.task.started', (event, data) ->
     $scope.keeps.push data
+
+  $rootScope.$on 'nk.default.task.created_makro', (event, data) ->
+    $scope.makros.push data;
+    $scope.keep = {} if $scope.keep ==  undefined
+    $scope.keep.makro = data
+
 ]

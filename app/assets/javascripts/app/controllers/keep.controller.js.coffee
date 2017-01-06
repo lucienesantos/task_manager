@@ -14,19 +14,22 @@
     KeepFactory.destroy_many(keepsToRemove) if confirm
 
   $scope.justKeepIt = (keep) ->
+    keep.makro_id = keep.makro.id if (keep.makro != undefined)
     KeepFactory.create(keep).then (response) ->
+      console.log($scope.keep)
       $rootScope.$broadcast 'nk.default.task.created', response.data
     , (error) ->
       console.error
 
   # create and start
   $scope.startItNow = (keep) ->
+    keep.makro_id = keep.makro.id if (keep.makro != undefined)
     keep.started = true
     keep.started_at = moment().format("YYYY-MM-DD HH:mm:ss")
 
     KeepFactory.create(keep).then (response) ->
-      $rootScope.$broadcast 'nk.task.started', response.data
       $scope.keep = {}
+      $rootScope.$broadcast 'nk.task.started', response.data
     , (error) ->
       console.error;
 
