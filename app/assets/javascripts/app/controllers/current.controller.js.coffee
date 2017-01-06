@@ -1,6 +1,7 @@
 @app.controller 'CurrentCtrl', ['$rootScope', '$scope', 'MakroFactory', ($rootScope, $scope, MakroFactory) ->
 
   $scope.modeDelete = false
+  $scope.selectAllKeeps = false
 
   $scope.fetch('current').then (response) ->
     $scope.keeps =  response.data
@@ -21,6 +22,9 @@
       $scope.keeps.splice(index, 1)
     , (error) ->
       console.error error
+
+  $scope.updateSelectedKeeps = () ->
+    $scope.keeps.forEach (keep) -> keep.isMarked = $scope.selectAllKeeps
 
   $scope.removeMany = () ->
     keepsToRemove = $scope.keeps.map (keep) -> return keep.id if keep.isMarked

@@ -12,6 +12,10 @@
 
     <a class="pull-right sm up" ng-show="keeps.length > 0" ng-click="modeDelete = !modeDelete">mark many as done</a>
 
+    <label class="pull-left" ng-show="modeDelete">
+      <input type="checkbox" ng-model="selectAllKeeps" ng-change="updateSelectedKeeps()"/> Select all
+    </label>
+
     <ul class="list">
       <li ng-repeat="keep in keeps" class="box wow fadeInUpBig">
         <label class="multi-delete" ng-show="modeDelete">
