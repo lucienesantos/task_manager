@@ -20,6 +20,10 @@
     request = $http(method: 'DELETE', url: "#{url}/#{id}.json")
     sendRequest(request)
 
+  destroy_many = (keepsToRemove) ->
+    request = $http(method: 'DELETE', data: {ids: keepsToRemove}, url: "#{url}/remove_many.json")
+    sendRequest(request)
+
   sendRequest = (config) ->
     config.then((response) -> deferred.resolve(response)).catch((error) -> deferred.reject(error))
     config
@@ -28,4 +32,6 @@
   create: create
   update: update
   destroy: destroy
+  destroy_many :destroy_many
+
 ]

@@ -11,6 +11,8 @@ class Keep < ApplicationRecord
 
   before_save :start!, if: :completed?
 
+  scope :by_ids, -> (ids) { where("id in (?)", ids)}
+
   def status
     return 'Completed' if self.completed?
     return self.started ? 'Started' : 'Not Initialized'

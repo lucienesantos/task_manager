@@ -148,4 +148,25 @@ RSpec.describe KeepsController, type: :controller do
     end
   end
 
+  describe "DELETE #destroy_many" do
+    before do
+      @keep_buy_lavatory = Keep.create! ({title: 'Comprar Pia'})
+      @keep_buy_paints = Keep.create! ({title: 'Comprar Tintas'})
+      @keep_hire_painter = Keep.create! ({title: 'Contratar Pintor'})
+    end
+
+    it "destroys requests keeps " do
+      expect{
+        delete :destroy_many, params: {ids: [@keep_buy_lavatory.id, @keep_hire_painter.id]}
+      }.to change(Keep, :count).by(-2)
+    end
+
+    it "renders a json with success message" do
+      delete :destroy_many, params: {ids: [@keep_buy_lavatory.id, @keep_buy_paints.id]}
+      json = JSON.parse(response.body)
+       expect(json["message"]).to eq("Keeps removed successfully")
+    end
+  end
+
+
 end

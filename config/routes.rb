@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  delete "/keeps/remove_many" => "keeps#destroy_many"
+
   resources :keeps, except: [:new] do
     post 'start', on: :member, to: 'keeps#start', as: :start
   end

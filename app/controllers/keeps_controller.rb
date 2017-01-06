@@ -1,6 +1,6 @@
 class KeepsController < ApplicationController
   
-  before_action :set_keep, except: [:index, :create]
+  before_action :set_keep, except: [:index, :create, :destroy_many]
 
   # GET /keeps
   # GET /keeps.json
@@ -51,6 +51,14 @@ class KeepsController < ApplicationController
       format.html { redirect_to keeps_url, notice: 'Keep was successfully destroyed.' }
       format.json { render json: @keep }
     end
+  end
+
+  # DELETE /keeps/remove_many.json
+  def destroy_many
+    keeps = Keep.by_ids(params[:ids])
+    keeps.map(&:deactive!)
+
+    render json: {message: "Keeps removed successfully"}
   end
 
   def start
