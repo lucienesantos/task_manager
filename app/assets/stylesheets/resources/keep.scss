@@ -1,0 +1,52 @@
+.todolist {
+  border-right: 1px solid #222;
+  background-color: #1c2b36;
+  color: #ccc;
+  min-height: 1080px;
+
+  .brand {
+    margin-bottom: 40px;
+    text-align: center;
+    a { color: #3bc0c3; }
+  }
+
+  .list {
+    font-size: 15px;
+    li { 
+      position: relative;
+      p { 
+        width: 90%;
+        margin-bottom: 0;
+
+        &:hover { 
+          a { display: inline } 
+        }
+      }
+    }
+  }
+
+  .btn-slim {
+    padding: 2px 6px;
+    font-size: 10px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+  }
+}
+
+
+.donelist {
+  .title {
+    margin: 30px 0;
+    text-align: center;
+  }
+
+  .list {
+    i { color: #3bc0c3; }
+
+    .destroy i {
+      color: #ccc;
+      font-size: 12px;
+    }
+  }
+}

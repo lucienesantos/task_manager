@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: senha
+  pool: 5
+
+development:
+  <<: *default
+  database: nanokeeps_development
+
+test:
+  <<: *default
+  database: nanokeeps_test
+
+production:
+  <<: *default
+  database: <%= ENV['HADUKEN'] %>
+

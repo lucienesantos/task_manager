@@ -1,0 +1,26 @@
+<nav>
+  <h3 class="brand"><a href="/" data-turbolinks="false">Nano<b>Keeps</b></a></h3>
+  <h5>Split big tasks into smaller tasks and get the things done faster.</h5>
+  <br />
+
+  <h4><b>Todo</b>List</h4><br />
+
+  <ul class="list">
+    <li ng-repeat="keep in todolist" class="wow slideInLeft" data-wow-delay="1s">
+      <p>
+        {{ keep.title }}
+        <a ng-click="removeIt(keep.id, $index)" class="mute sm">
+          <i class="glyphicon glyphicon-remove-circle"></i>
+        </a>
+      </p>
+      <a ng-if="keep.makro" href="{{ keep.makro_url }}" class="makro">{{ keep.makro.name }}</a>
+      
+      <a ng-click="startIt(keep, $index)" class="btn btn-slim btn-trans">
+        <i class="glyphicon glyphicon-play"> </i>
+      </a>
+      
+    </li>
+  </ul>
+
+  <h4 ng-show="todolist.length === 0">Do you have <b>Nothing</b> to do?</b> </h4>
+</nav>

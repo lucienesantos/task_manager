@@ -1,0 +1,16 @@
+/* Bootstrap Overrides */
+
+.btn-success { background-color: #3bc0c3; border-color: #3bc0c3; }
+.btn-primary { background-color: #4dbd74; border-color: #4dbd74; }
+
+.alert {
+  border-radius: 0;
+  margin: auto -15px;
+}
+
+.form-control {
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+
+.popover { min-width: 275px; }

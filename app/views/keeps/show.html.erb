@@ -1,0 +1,14 @@
+<% if notice %><p id="notice" class="alert alert-success"><%= notice %></p><% end %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h1><%= @keep.title %></h1>
+    <p class="makro"><%= @keep.makro.try(:name) %></p>
+  </div>
+</div>
+
+
+<%= link_to 'Start', edit_keep_path(@keep), class: 'btn btn-success' if !@keep.started? %>
+<%= link_to 'Done', edit_keep_path(@keep), class: 'btn btn-success' if @keep.started? %>
+<%= link_to 'Edit', edit_keep_path(@keep), class: 'btn btn-info' %>
+<%= link_to 'Remove', edit_keep_path(@keep), class: 'btn btn-danger' %>

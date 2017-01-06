@@ -1,0 +1,35 @@
+.yield {
+  background-color: #edf1f2;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  box-shadow: -15px 0 20px rgba(0,0,0,0.3);
+  min-height: 1080px;
+  
+  .list { 
+    margin: 50px 0;
+    position: relative;
+   
+    li { 
+      border-bottom: 1px solid #ddd;
+      padding: 12px 20px 15px;
+      position: relative;
+    }
+
+    .tr {
+      position: absolute;
+      top: -10px;
+      right: -5px;
+    }
+
+    .btn-done { 
+      position: absolute;
+      top: 33%;
+      right: 15px;
+    }
+  }
+}
+
+.multi-delete {
+  float: left;
+  margin: 9px 15px 0 0;
+}

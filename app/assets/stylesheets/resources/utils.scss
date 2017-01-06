@@ -1,0 +1,26 @@
+.sm { font-size: 70%; }
+.up { text-transform: uppercase; }
+.mt-60 { margin-top: 60px; }
+.mute { color: #999; }
+.danger { color: #f44336; }
+.no-padding { padding: 0; }
+.no-margin { margin: 0; }
+.tfix { padding-top: 8px; padding-right: 0 }
+
+.box {
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.btn-trans {
+  background-color: transparent !important;
+}
+
+.btn-slim {
+  padding: 2px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  border-color: #3bc0c3;
+  color: #3bc0c3;
+}

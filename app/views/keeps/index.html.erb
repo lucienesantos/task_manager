@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row" ng-controller="CurrentCtrl">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <h1><b>Keep</b> Simple</h1>
+    <p>Only 100 characters. Be Creative. </p>
+
+    <%= render 'form', keep: @keep %>
+
+    <div class="clearfix"></div>
+    <hr />
+
+    <a class="pull-right sm up" ng-show="keeps.length > 0" ng-click="modeDelete = !modeDelete">mark many as done</a>
+
+    <ul class="list">
+      <li ng-repeat="keep in keeps" class="box wow fadeInUpBig">
+        <label class="multi-delete" ng-show="modeDelete">
+          <input type="checkbox" /> 
+        </label>
+
+        <h4> {{ keep.title }}  <small>was started @ {{ formatDate(keep.started_at) }}</small></h4>
+        <a class="makro" href="{{ keep.makro_url }}" ng-if="keep.makro">{{ keep.makro.name }}</a>
+
+        <a class="btn btn-primary btn-done pull-right" ng-click="finishIt(keep, $index)"><i class="glyphicon glyphicon-ok"></i></a>
+
+        <a class="pull-right mute tr" ng-click="removeIt(keep.id, $index)"><i class="glyphicon glyphicon-remove-circle"></i></a>
+      </li>
+    </ul>
+
+    <a ng-show="modeDelete" class="btn btn-danger">Remove All Selected</a>
+
+    <h3 ng-show="keeps.length === 0"> Well Done. You have Nothing To Do... Oh Wait... <b>Really?</b> </h3>
+  </div>
+</div>

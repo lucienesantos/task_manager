@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NanoKeeps</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <div class="container-fluid" ng-app="nanokeeps" ng-controller="KeepOutOfCtrl">
+      <div class="row">
+        <div class="col-sm-3 hidden-xs todolist" ng-controller="TodoListCtrl">
+          <%= render 'commons/todolist' %>
+        </div>
+
+        <div class="col-sm-7 col-xs-12 yield"> <%= yield %> </div>
+
+        <div class="col-sm-2 hidden-xs donelist" ng-controller="GettingThingsDoneCtrl">
+          <%= render 'commons/done' %>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>

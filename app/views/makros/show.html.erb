@@ -1,0 +1,26 @@
+<% if notice %><p id="notice" class="alert alert-success"><%= notice %></p><% end %>
+
+<div class="row mt-60">
+  <div class="col-sm-10 col-sm-offset-1">
+    <a href="/" data-turbolinks="false"><i class="glyphicon glyphicon-menu-left"></i></a><br />
+    <span class="up sm"> A Big Duty</span>
+    <h2 class="no-margin"><%= @makro.name %> <small class="pull-right"><%= @makro.progress %>% Done</small></h2>
+
+    <p><%= @makro.description %></p>
+
+    <ul class="list">
+      <% @makro.keeps.each do |keep| %>
+        <li class="box wow bounceInUp">
+          <span class="label <%= keep.status.downcase %>"><%= keep.status %></span>
+          <%= keep.title %> 
+          <%= link_to '<i class="glyphicon glyphicon-play"></i>'.html_safe, start_keep_path(keep), class: "btn btn-success pull-right btn-xs" if keep.ready? %>
+
+          <%= link_to '<i class="glyphicon glyphicon-ok"></i>'.html_safe, start_keep_path(keep), class: "btn btn-primary pull-right btn-xs", title: 'Mark as Done' if keep.started? && !keep.completed? %>
+
+          <%= link_to '<i class="glyphicon glyphicon-remove-circle"></i>'.html_safe, start_keep_path(keep), class: "sm mute tfix pull-right" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
