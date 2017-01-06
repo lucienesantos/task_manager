@@ -15,7 +15,7 @@
     <ul class="list">
       <li ng-repeat="keep in keeps" class="box wow fadeInUpBig">
         <label class="multi-delete" ng-show="modeDelete">
-          <input type="checkbox" ng-model="keep.isMarked"/>       
+          <input type="checkbox" ng-model="keep.isMarked"/>
         </label>
 
         <h4> {{ keep.title }}  <small>was started @ {{ formatDate(keep.started_at) }}</small></h4>

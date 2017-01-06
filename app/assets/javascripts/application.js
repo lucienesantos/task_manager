@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require angular.min
+//= require ui-bootstrap-tpls-2.3.0.min
 //= require moment
 //= require wow.min
 
@@ -24,6 +25,4 @@
 
 $(function(){
   new WOW().init();
-  
-  $('#add-makro').popover({ html: true, placement: 'top', content: $('#makro-form').html() })
 })
