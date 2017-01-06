@@ -12,16 +12,12 @@
     </label>
 
     <div class="col-sm-4">
-      <select data-ng-model="keep.makro" class="form-control" data-ng-options="makro as makro.name for makro in makros track by makro.id">
-        <option value="">Select Makro</option>
-      </select>
-    </select>
+      <%= select_tag 'keep.makro_id', options_for_select(Makro.all.map{|m|[m.name, m.id]}), { include_blank: true, class: 'form-control', 'ng-model': 'keep.makro_id' } %>
     </div>
 
-    <div class="col-sm-1 no-padding" ng-controller="MakroCtrl">
+    <div class="col-sm-1 no-padding" >
       <a class="btn btn-info btn-xs btn-slim btn-trans" 
         uib-popover-template="'add-makro-form.html'" popover-title="Add A new Macro Task"
-        popover-is-open="isOpen"
         style="position: absolute;" >
         <i class="glyphicon glyphicon-plus"></i>
       </a>
@@ -35,12 +31,11 @@
     <input type="submit" ng-click="startItNow(keep)" value="Starting Now!" class="btn btn-success" />
   </div>
 </form>
-
 <script type="text/ng-template" id="add-makro-form.html">
-    <div class="input-group" >
+    <div class="input-group">
       <input type="text" class="form-control" placeholder="Makro Task" name="makro.name" ng-model="makro.name">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="create(makro)">Add</button>
+        <button class="btn btn-default" type="button" ng-click="addMakro(makro)">Add</button>
       </span>
     </div>
 </script>
